@@ -1,5 +1,9 @@
-﻿html {
+﻿/* --- 1. ESTILOS DE BASE E LAYOUT --- */
+
+html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -8,45 +12,84 @@
     }
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-}
-
 body {
+    /* Layout */
     margin-bottom: 0;
-    background-color: #1a1a1a;
-    color: #f0f0f0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}   
+    /* Tema */
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    /* Fonte Global */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
+/* Container principal (para sticky footer) */
 .main-content-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #111111 !important;
+/* Links Globais */
+a {
+    color: #ff8533;
 }
 
-.navbar-brand {
-    color: #ff6600 !important;
-    font-weight: bold;
-}
-
-.nav-link {
-    color: #cccccc !important;
-}
-
-    .nav-link:hover {
-        color: #ffffff !important;
+    a:hover {
+        color: #ff6600;
     }
 
-/* Botões */
+/* --- 2. COMPONENTES GLOBAIS (Reutilizáveis) --- */
+
+/* Header */
+.pro-navbar {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    flex-shrink: 0;
+}
+
+.navbar {
+    background-color: #1a1a1a !important;
+}
+
+.pro-navbar .navbar-brand {
+    color: #ff6600 !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.pro-navbar .pro-nav-link {
+    color: #a0a0a0;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+    .pro-navbar .pro-nav-link:hover {
+        color: #ffffff;
+        background-color: #2a2a2a;
+    }
+
+.pro-navbar .navbar-toggler {
+    border-color: #333;
+}
+
+    .pro-navbar .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
+    }
+
+/* Botões Padrão (Bootstrap) */
 .btn-primary {
     background-color: #ff6600;
     border-color: #ff6600;
@@ -58,7 +101,47 @@ body {
         border-color: #e65c00;
     }
 
-/* Formulários */
+/* Botões Profissionais (Projeto) */
+.pro-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+    .pro-btn.btn-primary {
+        box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
+    }
+
+        .pro-btn.btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.3);
+        }
+
+.pro-btn-outline {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+    .pro-btn-outline.btn-outline-light:hover,
+    .pro-btn-outline:hover {
+        background-color: #f0f0f0;
+        color: #1a1a1a;
+        border-color: #f0f0f0;
+        transform: translateY(-3px);
+    }
+
+/* Formulários Padrão (Bootstrap) */
 .form-control {
     background-color: #333;
     color: #f0f0f0;
@@ -80,36 +163,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
-/* Tabelas */
-.table {
-    color: #f0f0f0;
-}
-
-.table-hover > tbody > tr:hover > * {
-    color: #1a1a1a;
-}
-
-/* Links */
-a {
-    color: #ff8533;
-}
-
-    a:hover {
-        color: #ff6600;
-    }
-
-/* Footer */
-.footer {
-    background-color: #111;
-    border-top: 1px solid #333;
-}
-
-/* ---  Estrelas --- */
-
+/* Componente de Estrelas */
 .star-rating-5 {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     padding: 0;
 }
 
@@ -117,39 +175,53 @@ a {
         display: none;
     }
 
-    /* Estilo do 'label' (a estrela) */
     .star-rating-5 label {
-        font-size: 2.2em; /* Tamanho da estrela */
-        color: #555; /* Cor da estrela vazia */
+        font-size: 2.2em;
+        color: #555;
         cursor: pointer;
         line-height: 1;
-        padding: 0 0.1em; 
+        padding: 0 0.1em;
         transition: color 0.1s ease-in-out;
     }
 
         .star-rating-5 label:hover,
         .star-rating-5 label:hover ~ label {
-            color: #ff8533; /* Laranja um pouco mais claro no hover */
+            color: #ff8533;
         }
 
     .star-rating-5 input[type="radio"]:checked ~ label {
         color: #ff6600;
     }
 
-/* --- Estilos da Landing Page  --- */
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Título de Seção (Usado na Home e Diário) */
+.pro-section-title {
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
-/* Container principal da página */
+    .pro-section-title h2 {
+        font-size: 2.8rem;
+        font-weight: 500;
+        color: #f0f0f0;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.5px;
+    }
+
+    .pro-section-title p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #a0a0a0;
+        margin-bottom: 0;
+        line-height: 1.4;
+    }
+
+/* --- 3. ESTILOS DE PÁGINA ESPECÍFICA --- */
+
+/* 3.1 - Home/Landing Page */
 .pro-landing {
     width: 100%;
 }
 
-/* --- Seção Hero --- */
 .pro-hero {
     display: flex;
     align-items: center;
@@ -178,7 +250,7 @@ body {
 .pro-subtitle {
     font-size: 1.25rem;
     font-weight: 300;
-    color: #a0a0a0; 
+    color: #a0a0a0;
     line-height: 1.7;
     max-width: 600px;
     margin: 0 auto 2.5rem auto;
@@ -190,87 +262,19 @@ body {
     gap: 1rem;
 }
 
-/* Estilo do botão primário (principal) */
-.pro-btn.btn-primary {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
-}
-
-    .pro-btn.btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(255, 102, 0, 0.3);
-    }
-
-/* Estilo do botão secundário (contorno) */
-.pro-btn-outline.btn-outline-light {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #f0f0f0;
-    border-color: #555;
-    transition: all 0.2s ease;
-}
-
-    .pro-btn-outline.btn-outline-light:hover {
-        background-color: #f0f0f0;
-        color: #1a1a1a;
-        border-color: #f0f0f0;
-        transform: translateY(-3px);
-    }
-
-/* --- Seção "How it Works" --- */
 .pro-features {
     padding: 6rem 0;
 }
 
-.pro-section-title {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-/* --- Estilo do Título da Página (Meu Diário) --- */
-
-.pro-section-title h2 {
-    font-size: 2.8rem; /* Um pouco maior */
-    font-weight: 500; /* Mais leve, mais refinado */
-    color: #f0f0f0;
-    margin-bottom: 0.25rem; /* Menos espaço entre título e subtítulo */
-    letter-spacing: -0.5px; /* Um "kerning" sutil que designers adoram */
-}
-
-/* Estilo do novo subtítulo da página */
-.pro-section-title p {
-    font-size: 1.1rem;
-    font-weight: 300; /* Super leve */
-    color: #a0a0a0; /* Cinza claro, não compete com o título */
-    margin-bottom: 0;
-    line-height: 1.4;
-}
-
-    .pro-section-title p {
-        font-size: 1.1rem;
-        font-weight: 300;
-        color: #a0a0a0;
-    }
-
 .pro-feature-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
 .pro-feature-item {
     text-align: center;
-    background-color: #222; /* Mesmo cinza das caixas de antes */
+    background-color: #222;
     padding: 2.5rem;
     border: 1px solid #333;
     border-radius: 8px;
@@ -287,7 +291,7 @@ body {
     font-size: 2.5rem;
     color: #ff6600;
     margin-bottom: 1.5rem;
-    display: inline-block; /* Permite que o fundo seja aplicado */
+    display: inline-block;
 }
 
 .pro-feature-item h3 {
@@ -303,72 +307,92 @@ body {
     line-height: 1.6;
 }
 
-/* --- Responsividade --- */
-@media (max-width: 992px) {
-    .pro-feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .pro-hero {
-        padding: 6rem 0;
-    }
-
-    .pro-title {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .pro-cta-group {
-        flex-direction: column;
-    }
-
-    .pro-btn, .pro-btn-outline {
-        width: 100%;
-    }
-
-    .pro-title {
-        font-size: 2.5rem;
-    }
-}
-
-/* --- Estilos da Página de Listagem (Galeria) --- */
-
-/* Título da página */
-.pro-title-page {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #f0f0f0;
-}
-
-/* --- Card do Filme --- */
-.movie-card {
-    background-color: #222; /* Cor de fundo do card */
-    border: 1px solid #333;
-    border-radius: 8px;
-    overflow: hidden; /* Garante que a imagem não vaze */
-    transition: all 0.2s ease-in-out;
-    height: 100%;
+/* 3.2 - Diário (Filme/Index) */
+.pro-search-form {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+}
+
+    .pro-search-form .form-control {
+        padding-left: 2.5rem;
+        font-size: 1.1rem;
+        height: 50px;
+        border-color: #333;
+        font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+        .pro-search-form .form-control:focus {
+            border-color: #ff6600;
+            box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
+        }
+
+    .pro-search-form .search-icon {
+        position: absolute;
+        left: 1rem;
+        font-size: 1.1rem;
+        color: #777;
+        z-index: 10;
+    }
+
+    .pro-search-form .btn {
+        height: 50px;
+        margin-left: 0.5rem;
+    }
+
+.pro-empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: #222;
+    border: 1px dashed #444;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+    .pro-empty-state .bi-film {
+        font-size: 5rem;
+        color: #ff6600;
+        margin-bottom: 2rem;
+    }
+
+    .pro-empty-state h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #f0f0f0;
+        margin-bottom: 0.5rem;
+    }
+
+    .pro-empty-state p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #a0a0a0;
+        margin-bottom: 2.5rem;
+    }
+
+.movie-card {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.25s ease-in-out;
+    height: 100%;
 }
 
     .movie-card:hover {
-        border-color: #ff6600;
-        transform: translateY(-5px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.03);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 10;
     }
 
-/* Wrapper do Pôster (para manter proporção) */
 .movie-poster-wrapper {
     position: relative;
     width: 100%;
-    /* Proporção 2:3 (padrão de pôster) */
     padding-top: 150%;
     background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* Imagem real do pôster */
 .movie-poster-img {
     position: absolute;
     top: 0;
@@ -376,9 +400,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
 }
 
-/* Estilo do "Fallback" (se não houver imagem) */
 .movie-poster-fallback {
     position: absolute;
     top: 0;
@@ -394,7 +418,6 @@ body {
     color: #aaa;
 }
 
-/* Badge da Nota (sobreposta no pôster) */
 .movie-rating-badge {
     position: absolute;
     top: 0.5rem;
@@ -405,6 +428,7 @@ body {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.9rem;
+    z-index: 3;
 }
 
     .movie-rating-badge .bi-star-fill {
@@ -412,20 +436,47 @@ body {
         margin-left: 2px;
     }
 
-/* Corpo do Card (informações) */
-.movie-card-body {
-    padding: 1rem;
-    flex-grow: 1;
+.movie-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.8) 100%);
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 2;
+}
+
+.movie-card:hover .movie-card-overlay {
+    opacity: 1;
+}
+
+.movie-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    transform: translateY(10px);
+    transition: transform 0.25s ease-in-out;
+}
+
+.movie-card:hover .movie-card-actions {
+    transform: translateY(0);
+}
+
+.movie-card-body {
+    padding: 0.75rem 0.25rem;
+    text-align: left;
 }
 
 .movie-card-title {
     font-size: 1.1rem;
     font-weight: 600;
     color: #f0f0f0;
-    margin-bottom: 0.25rem;
-    /* Corta o texto se for muito longo */
+    margin-bottom: 0.1rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -434,23 +485,11 @@ body {
 .movie-card-year {
     font-size: 0.9rem;
     color: #aaa;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
-.movie-card-date {
-    font-size: 0.8rem;
-    color: #888;
-    flex-grow: 1;
-}
 
-.movie-card-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-/* --- Estilos do Formulário  --- */
-
+/* 3.3 - Formulários (Cadastrar/Editar) */
 .form-container-pro {
     background-color: #222;
     border: 1px solid #333;
@@ -494,312 +533,54 @@ body {
     min-height: 120px;
 }
 
-/* Linha divisória antes dos botões */
 .form-divider {
     border-color: #333;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-/* Container dos botões */
 .form-group-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
 
-.pro-btn {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-}
-
-.pro-btn-outline {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    color: #f0f0f0;
-    border-color: #555;
-}
-
-    .pro-btn-outline:hover {
-        background-color: #f0f0f0;
-        color: #1a1a1a;
-        border-color: #f0f0f0;
-    }
-
-/* --- Estilos da Página Diário (Index) --- */
-
-/* Formulário de Busca Profissional */
-.pro-search-form {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-    .pro-search-form .form-control {
-        padding-left: 2.5rem; /* Espaço para o ícone */
-        font-size: 1.1rem;
-        height: 50px; /* Mais altura */
-        border-color: #333;
-        /* Usa a mesma fonte da landing page */
-        font-family: 'Inter', -apple-system, sans-serif;
-    }
-
-        .pro-search-form .form-control:focus {
-            border-color: #ff6600;
-            /* Brilho laranja sutil no foco */
-            box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
-        }
-
-    .pro-search-form .search-icon {
-        position: absolute;
-        left: 1rem;
-        font-size: 1.1rem;
-        color: #777;
-        z-index: 10; /* Para ficar acima do input */
-    }
-
-    .pro-search-form .btn {
-        height: 50px;
-        margin-left: 0.5rem;
-    }
-
-/* "Empty State" (Quando não há filmes) */
-.pro-empty-state {
-    text-align: center;
-    padding: 5rem 2rem;
-    background-color: #222;
-    border: 1px dashed #444; /* Borda tracejada */
-    border-radius: 8px;
-    margin-top: 2rem;
-}
-
-    .pro-empty-state .bi-film {
-        font-size: 5rem;
-        color: #ff6600;
-        margin-bottom: 2rem;
-    }
-
-    .pro-empty-state h2 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: #f0f0f0;
-        margin-bottom: 0.5rem;
-    }
-
-    .pro-empty-state p {
-        font-size: 1.1rem;
-        font-weight: 300;
-        color: #a0a0a0;
-        margin-bottom: 2.5rem;
-    }
-
-/* --- Refinamento do Card do Filme --- */
-.movie-card {
-    background-color: transparent;
-    border: none;
-    border-radius: 8px; 
-    overflow: hidden;
-    transition: all 0.25s ease-in-out;
-    height: 100%;
-}
-
-    .movie-card:hover {
-        transform: scale(1.03); /* Efeito de "zoom" sutil */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
-        z-index: 10;
-    }
-
-.movie-poster-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 150%; /* Proporção 2:3 (pôster) */
-    background-color: #333;
-    border-radius: 8px; /* Arredonda o pôster */
-    overflow: hidden; /* Crucial para o overlay */
-}
-
-.movie-poster-img {
-    border-radius: 8px;
-}
-
-.movie-rating-badge {
-    z-index: 3; /* Fica acima de tudo */
-}
-
-/* O "Overlay" de Ações (A Mágica) */
-.movie-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Gradiente sutil de baixo para cima */
-    background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.8) 100%);
-    display: flex;
-    align-items: flex-end; /* Alinha os botões embaixo */
-    justify-content: center;
-    padding: 1rem;
-    opacity: 0; /* Começa 100% invisível */
-    transition: opacity 0.25s ease-in-out;
-    z-index: 2; /* Fica acima da imagem, abaixo do badge */
-}
-
-.movie-card:hover .movie-card-overlay {
-    opacity: 1; /* Fica visível no hover */
-}
-
-.movie-card-actions {
-    display: flex;
-    gap: 0.5rem;
-    /* Animação de "subida" */
-    transform: translateY(10px);
-    transition: transform 0.25s ease-in-out;
-}
-
-.movie-card:hover .movie-card-actions {
-    transform: translateY(0); /* Sobe para a Posição 0 */
-}
-
-
-/* Corpo do Card (Info) */
-.movie-card-body {
-    padding: 0.75rem 0.25rem; /* Menos padding lateral */
-    text-align: left;
-}
-
-.movie-card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #f0f0f0;
-    margin-bottom: 0.1rem; /* Mais junto do ano */
-}
-
-.movie-card-year {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-bottom: 0;
-}
-
-/* --- Header --- */
-
-/* O container da navbar */
-.pro-navbar {
-    background-color: #1a1a1a; /* Fundo escuro principal */
-    border-bottom: 1px solid #2a2a2a; /* Borda sutil (mais escura que #333) */
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    /* Garante que o header não encolha (importante para o layout flex) */
-    flex-shrink: 0;
-}
-
-/* Força a remoção do 'bg-dark' que pode estar em cache */
-.navbar {
-    background-color: #1a1a1a !important;
-}
-
-/* Estiliza o logo (MovieLog) */
-.pro-navbar .navbar-brand {
-    color: #ff6600 !important; /* Sua cor laranja */
-    font-weight: 700;
-    font-size: 1.5rem;
-    font-family: 'Inter', sans-serif; /* A mesma fonte profissional */
-}
-
-/* Estiliza os links (Home, Meu Diário) */
-.pro-navbar .pro-nav-link {
-    color: #a0a0a0; /* Cinza claro, não branco total */
-    font-weight: 500;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0.5rem 1rem !important; /* Espaçamento interno */
-    border-radius: 6px;
-    transition: all 0.2s ease-in-out;
-}
-
-    /* Efeito Hover nos links */
-    .pro-navbar .pro-nav-link:hover {
-        color: #ffffff; /* Fica branco */
-        background-color: #2a2a2a; /* Fundo cinza escuro sutil */
-    }
-
-/* Ajusta o botão "hamburger" (mobile) */
-.pro-navbar .navbar-toggler {
-    border-color: #333;
-}
-
-    .pro-navbar .navbar-toggler:focus {
-        box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25); /* Sombra laranja */
-    }
-
-/* --- Footer --- */
+/* --- 4. FOOTER --- */
 
 .pro-footer {
-    /* Garante que o footer não encolha (essencial para o layout flex) */
     flex-shrink: 0;
-    /* Cor de fundo e borda superior (espelhando o header) */
     background-color: #1a1a1a;
-    border-top: 1px solid #2a2a2a; /* Borda escura sutil */
-    /* Tipografia e espaçamento */
-    color: #888; /* Cinza sutil, não compete com o conteúdo */
+    border-top: 1px solid #2a2a2a;
+    color: #888;
     font-size: 0.9rem;
-    font-weight: 300; /* Fonte leve */
-    padding: 2rem 0; /* Um bom espaçamento vertical */
+    font-weight: 300;
+    padding: 2rem 0;
     text-align: center;
 }
 
-    .pro-footer span {
-        margin: 0 0.5rem;
-    }
-
-    /* Estilo do divisor "|" */
-    .pro-footer .pro-footer-divider {
-        color: #444; /* Cor ainda mais sutil para o divisor */
-    }
-
-/* --- Ajustes no Footer para Integrantes --- */
-
-.pro-footer {
-    /* ... (o código anterior do footer: flex-shrink, background, etc) ... */
-    /* Vamos garantir que o texto seja centralizado */
-    text-align: center;
-}
-
-/* Container para os nomes */
 .pro-footer-integrantes {
-    display: flex; /* Alinha os nomes lado a lado */
-    justify-content: center; /* Centraliza o grupo de nomes */
-    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
-    gap: 1.5rem; /* Espaçamento entre os nomes */
-    margin-bottom: 1.5rem; /* Espaço entre os nomes e o copyright */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
     font-size: 0.9rem;
-    font-weight: 400; /* Um pouco mais de peso */
+    font-weight: 400;
     color: #aaa;
 }
 
     .pro-footer-integrantes div {
         display: flex;
-        flex-direction: column; /* Empilha Nome e RM */
+        flex-direction: column;
         align-items: center;
     }
 
     .pro-footer-integrantes span {
         font-size: 0.85rem;
-        color: #777; /* RM com uma cor mais sutil */
+        color: #777;
         font-weight: 300;
     }
 
-/* Container para o copyright (código que já existia) */
 .pro-footer-info {
     font-size: 0.9rem;
     font-weight: 300;
@@ -807,9 +588,55 @@ body {
 }
 
 .pro-footer span {
-    margin: 0 0.25rem; /* Ajusta a margem que estava muito grande */
+    margin: 0 0.25rem;
 }
 
 .pro-footer .pro-footer-divider {
     color: #444;
+}
+
+/* --- 5. RESPONSIVIDADE (Media Queries) --- */
+
+@media (max-width: 992px) {
+    /* Landing Page */
+    .pro-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-hero {
+        padding: 6rem 0;
+    }
+
+    .pro-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Landing Page */
+    .pro-cta-group {
+        flex-direction: column;
+    }
+
+    .pro-btn, .pro-btn-outline {
+        width: 100%;
+    }
+
+    .pro-title {
+        font-size: 2.5rem;
+    }
+
+    /* Diário */
+    #diary-control-panel {
+        gap: 1.5rem;
+    }
+
+    .pro-section-title,
+    .col-md-3.text-md-end {
+        text-align: center !important;
+    }
+
+    .pro-btn.w-100 {
+        width: 100% !important;
+    }
 }
