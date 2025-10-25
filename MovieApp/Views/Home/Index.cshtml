@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Bem-vindo ao MovieLog";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<div class="pro-landing">
+
+    <section class="pro-hero">
+        <div class="pro-hero-content">
+            <h1 class="pro-title">
+                Seu cinema particular.
+                <br>
+                <span>Seu diário definitivo.</span>
+            </h1>
+            <p class="pro-subtitle">
+                O MovieLog é o seu espaço pessoal para catalogar, avaliar e
+                revisitar cada filme que faz parte da sua história.
+            </p>
+            <div class="pro-cta-group">
+                <a class="btn btn-primary pro-btn" asp-controller="Filme" asp-action="Index">
+                    Ver meu diário
+                </a>
+                <a class="btn btn-outline-light pro-btn-outline" asp-controller="Filme" asp-action="Cadastrar">
+                    Adicionar Filme
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="pro-features">
+        <div class="pro-section-title">
+            <h2>Simples como deve ser</h2>
+            <p>Um diário de filmes focado em você.</p>
+        </div>
+
+        <div class="pro-feature-grid">
+            <div class="pro-feature-item">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-camera-reels-fill"></i>
+                </div>
+                <h3>1. Assista</h3>
+                <p>Curta seu filme, do clássico cult ao último blockbuster.</p>
+            </div>
+
+            <div class="pro-feature-item">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-pencil-fill"></i>
+                </div>
+                <h3>2. Registre</h3>
+                <p>Cadastre o título, sua nota e uma review. Crie seu próprio catálogo.</p>
+            </div>
+
+            <div class="pro-feature-item">
+                <div class="feature-icon-wrapper">
+                    <i class="bi bi-bookmark-star-fill"></i>
+                </div>
+                <h3>3. Redescubra</h3>
+                <p>Navegue pelo seu histórico e relembre suas maiores experiências no cinema.</p>
+            </div>
+        </div>
+    </section>
+
+</div>

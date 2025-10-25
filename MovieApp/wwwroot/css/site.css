@@ -1,0 +1,312 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111111 !important;
+}
+
+.navbar-brand {
+    color: #ff6600 !important;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #cccccc !important;
+}
+
+    .nav-link:hover {
+        color: #ffffff !important;
+    }
+
+/* Botões */
+.btn-primary {
+    background-color: #ff6600;
+    border-color: #ff6600;
+    color: #ffffff;
+}
+
+    .btn-primary:hover {
+        background-color: #e65c00;
+        border-color: #e65c00;
+    }
+
+/* Formulários */
+.form-control {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+    .form-control:focus {
+        background-color: #444;
+        color: #f0f0f0;
+        border-color: #ff6600;
+        box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25);
+    }
+
+    .form-control::placeholder {
+        color: #888;
+    }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* Tabelas */
+.table {
+    color: #f0f0f0;
+}
+
+.table-hover > tbody > tr:hover > * {
+    color: #1a1a1a;
+}
+
+/* Links */
+a {
+    color: #ff8533;
+}
+
+    a:hover {
+        color: #ff6600;
+    }
+
+/* Footer */
+.footer {
+    background-color: #111;
+    border-top: 1px solid #333;
+}
+
+/* ---  Estrelas --- */
+
+.star-rating-5 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end; 
+    padding: 0;
+}
+
+    .star-rating-5 input[type="radio"] {
+        display: none;
+    }
+
+    /* Estilo do 'label' (a estrela) */
+    .star-rating-5 label {
+        font-size: 2.2em; /* Tamanho da estrela */
+        color: #555; /* Cor da estrela vazia */
+        cursor: pointer;
+        line-height: 1;
+        padding: 0 0.1em; 
+        transition: color 0.1s ease-in-out;
+    }
+
+        .star-rating-5 label:hover,
+        .star-rating-5 label:hover ~ label {
+            color: #ff8533; /* Laranja um pouco mais claro no hover */
+        }
+
+    .star-rating-5 input[type="radio"]:checked ~ label {
+        color: #ff6600;
+    }
+
+/* --- Estilos da Landing Page  --- */
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container principal da página */
+.pro-landing {
+    width: 100%;
+}
+
+/* --- Seção Hero --- */
+.pro-hero {
+    display: flex;
+    align-items: center;
+    padding: 8rem 0;
+    border-bottom: 1px solid #2a2a2a;
+    text-align: center;
+    justify-content: center;
+}
+
+.pro-hero-content {
+    max-width: 800px;
+}
+
+.pro-title {
+    font-size: 3.8rem;
+    font-weight: 900;
+    color: #f0f0f0;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+    .pro-title span {
+        color: #ff6600;
+    }
+
+.pro-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #a0a0a0; 
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.pro-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Estilo do botão primário (principal) */
+.pro-btn.btn-primary {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
+}
+
+    .pro-btn.btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 102, 0, 0.3);
+    }
+
+/* Estilo do botão secundário (contorno) */
+.pro-btn-outline.btn-outline-light {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #f0f0f0;
+    border-color: #555;
+    transition: all 0.2s ease;
+}
+
+    .pro-btn-outline.btn-outline-light:hover {
+        background-color: #f0f0f0;
+        color: #1a1a1a;
+        border-color: #f0f0f0;
+        transform: translateY(-3px);
+    }
+
+/* --- Seção "How it Works" --- */
+.pro-features {
+    padding: 6rem 0;
+}
+
+.pro-section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+    .pro-section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #f0f0f0;
+        margin-bottom: 0.5rem;
+    }
+
+    .pro-section-title p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #a0a0a0;
+    }
+
+.pro-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem;
+}
+
+.pro-feature-item {
+    text-align: center;
+    background-color: #222; /* Mesmo cinza das caixas de antes */
+    padding: 2.5rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+    .pro-feature-item:hover {
+        border-color: #ff6600;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+.feature-icon-wrapper {
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 1.5rem;
+    display: inline-block; /* Permite que o fundo seja aplicado */
+}
+
+.pro-feature-item h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-bottom: 0.75rem;
+}
+
+.pro-feature-item p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .pro-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-hero {
+        padding: 6rem 0;
+    }
+
+    .pro-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pro-cta-group {
+        flex-direction: column;
+    }
+
+    .pro-btn, .pro-btn-outline {
+        width: 100%;
+    }
+
+    .pro-title {
+        font-size: 2.5rem;
+    }
+}

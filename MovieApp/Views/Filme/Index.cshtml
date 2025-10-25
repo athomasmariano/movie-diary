@@ -1,0 +1,47 @@
+﻿@model List<Filme>
+@{
+    ViewData["Title"] = "Meus Filmes";
+}
+
+<h1>Meus Filmes Assistidos</h1>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar por título..." value="@ViewBag.Busca" />
+            <button type="submit" class="btn btn-outline-light">Buscar</button>
+        </form>
+    </div>
+    <div class="col-md-6 text-end">
+        <a asp-action="Cadastrar" class="btn btn-primary">Adicionar Filme</a>
+    </div>
+</div>
+
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].Titulo)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Ano)</th>
+            <th>@Html.DisplayNameFor(model => model[0].DataAssistido)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Genero)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Nota)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var filme in Model)
+        {
+            <tr>
+                <td>@filme.Titulo</td>
+                <td>@filme.Ano</td>
+                <td>@filme.DataAssistido.ToShortDateString()</td>
+                <td>@filme.Genero</td>
+                <td>@filme.Nota / 5</td>
+                <td class="text-end">
+                    <a asp-action="Editar" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-warning">Editar</a>
+                    <a asp-action="Remover" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-danger">Remover</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
