@@ -10,6 +10,8 @@ namespace MovieApp.Models
         [Required(ErrorMessage = "O título é obrigatório")]
         public string Titulo { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "O ano é obrigatório")]
+        [Range(1888, 3000, ErrorMessage = "O ano deve ser no mínimo 1888.")]
         public int Ano { get; set; }
 
         // Requisito: Usar tipo 'Data'

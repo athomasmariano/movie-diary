@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieApp.Data;
 using MovieApp.Models;
+using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MovieApp.Controllers
 {
@@ -9,7 +12,26 @@ namespace MovieApp.Controllers
     {
         private void CarregarGenerosNoViewBag()
         {
-            ViewBag.Generos = new SelectList(Enum.GetValues(typeof(Genero)));
+            var generosList = Enum.GetValues(typeof(Genero))
+                                  .Cast<Genero>()
+                                  .Select(g => new SelectListItem
+                                  {
+                                      Text = GetEnumDisplayName(g),
+                                      Value = g.ToString()
+                                  })
+                                  .ToList();
+
+            ViewBag.Generos = generosList;
+        }
+
+        // Método Helper para ler o [Display] do Enum
+        private string GetEnumDisplayName(Enum enumValue)
+        {
+            return enumValue.GetType()
+                            .GetMember(enumValue.ToString())
+                            .First()
+                            .GetCustomAttribute<DisplayAttribute>()?
+                            .GetName() ?? enumValue.ToString();
         }
 
         // READ (Listar todos) + PESQUISA
