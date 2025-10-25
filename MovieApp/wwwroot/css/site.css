@@ -237,12 +237,24 @@ body {
     margin-bottom: 4rem;
 }
 
-    .pro-section-title h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #f0f0f0;
-        margin-bottom: 0.5rem;
-    }
+/* --- Estilo do Título da Página (Meu Diário) --- */
+
+.pro-section-title h2 {
+    font-size: 2.8rem; /* Um pouco maior */
+    font-weight: 500; /* Mais leve, mais refinado */
+    color: #f0f0f0;
+    margin-bottom: 0.25rem; /* Menos espaço entre título e subtítulo */
+    letter-spacing: -0.5px; /* Um "kerning" sutil que designers adoram */
+}
+
+/* Estilo do novo subtítulo da página */
+.pro-section-title p {
+    font-size: 1.1rem;
+    font-weight: 300; /* Super leve */
+    color: #a0a0a0; /* Cinza claro, não compete com o título */
+    margin-bottom: 0;
+    line-height: 1.4;
+}
 
     .pro-section-title p {
         font-size: 1.1rem;
@@ -523,3 +535,281 @@ body {
         color: #1a1a1a;
         border-color: #f0f0f0;
     }
+
+/* --- Estilos da Página Diário (Index) --- */
+
+/* Formulário de Busca Profissional */
+.pro-search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .pro-search-form .form-control {
+        padding-left: 2.5rem; /* Espaço para o ícone */
+        font-size: 1.1rem;
+        height: 50px; /* Mais altura */
+        border-color: #333;
+        /* Usa a mesma fonte da landing page */
+        font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+        .pro-search-form .form-control:focus {
+            border-color: #ff6600;
+            /* Brilho laranja sutil no foco */
+            box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
+        }
+
+    .pro-search-form .search-icon {
+        position: absolute;
+        left: 1rem;
+        font-size: 1.1rem;
+        color: #777;
+        z-index: 10; /* Para ficar acima do input */
+    }
+
+    .pro-search-form .btn {
+        height: 50px;
+        margin-left: 0.5rem;
+    }
+
+/* "Empty State" (Quando não há filmes) */
+.pro-empty-state {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: #222;
+    border: 1px dashed #444; /* Borda tracejada */
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+    .pro-empty-state .bi-film {
+        font-size: 5rem;
+        color: #ff6600;
+        margin-bottom: 2rem;
+    }
+
+    .pro-empty-state h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #f0f0f0;
+        margin-bottom: 0.5rem;
+    }
+
+    .pro-empty-state p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #a0a0a0;
+        margin-bottom: 2.5rem;
+    }
+
+/* --- Refinamento do Card do Filme --- */
+.movie-card {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px; 
+    overflow: hidden;
+    transition: all 0.25s ease-in-out;
+    height: 100%;
+}
+
+    .movie-card:hover {
+        transform: scale(1.03); /* Efeito de "zoom" sutil */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+        z-index: 10;
+    }
+
+.movie-poster-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 150%; /* Proporção 2:3 (pôster) */
+    background-color: #333;
+    border-radius: 8px; /* Arredonda o pôster */
+    overflow: hidden; /* Crucial para o overlay */
+}
+
+.movie-poster-img {
+    border-radius: 8px;
+}
+
+.movie-rating-badge {
+    z-index: 3; /* Fica acima de tudo */
+}
+
+/* O "Overlay" de Ações (A Mágica) */
+.movie-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente sutil de baixo para cima */
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.8) 100%);
+    display: flex;
+    align-items: flex-end; /* Alinha os botões embaixo */
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0; /* Começa 100% invisível */
+    transition: opacity 0.25s ease-in-out;
+    z-index: 2; /* Fica acima da imagem, abaixo do badge */
+}
+
+.movie-card:hover .movie-card-overlay {
+    opacity: 1; /* Fica visível no hover */
+}
+
+.movie-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    /* Animação de "subida" */
+    transform: translateY(10px);
+    transition: transform 0.25s ease-in-out;
+}
+
+.movie-card:hover .movie-card-actions {
+    transform: translateY(0); /* Sobe para a Posição 0 */
+}
+
+
+/* Corpo do Card (Info) */
+.movie-card-body {
+    padding: 0.75rem 0.25rem; /* Menos padding lateral */
+    text-align: left;
+}
+
+.movie-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-bottom: 0.1rem; /* Mais junto do ano */
+}
+
+.movie-card-year {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 0;
+}
+
+/* --- Header --- */
+
+/* O container da navbar */
+.pro-navbar {
+    background-color: #1a1a1a; /* Fundo escuro principal */
+    border-bottom: 1px solid #2a2a2a; /* Borda sutil (mais escura que #333) */
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    /* Garante que o header não encolha (importante para o layout flex) */
+    flex-shrink: 0;
+}
+
+/* Força a remoção do 'bg-dark' que pode estar em cache */
+.navbar {
+    background-color: #1a1a1a !important;
+}
+
+/* Estiliza o logo (MovieLog) */
+.pro-navbar .navbar-brand {
+    color: #ff6600 !important; /* Sua cor laranja */
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: 'Inter', sans-serif; /* A mesma fonte profissional */
+}
+
+/* Estiliza os links (Home, Meu Diário) */
+.pro-navbar .pro-nav-link {
+    color: #a0a0a0; /* Cinza claro, não branco total */
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem !important; /* Espaçamento interno */
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+    /* Efeito Hover nos links */
+    .pro-navbar .pro-nav-link:hover {
+        color: #ffffff; /* Fica branco */
+        background-color: #2a2a2a; /* Fundo cinza escuro sutil */
+    }
+
+/* Ajusta o botão "hamburger" (mobile) */
+.pro-navbar .navbar-toggler {
+    border-color: #333;
+}
+
+    .pro-navbar .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 102, 0, 0.25); /* Sombra laranja */
+    }
+
+/* --- Footer --- */
+
+.pro-footer {
+    /* Garante que o footer não encolha (essencial para o layout flex) */
+    flex-shrink: 0;
+    /* Cor de fundo e borda superior (espelhando o header) */
+    background-color: #1a1a1a;
+    border-top: 1px solid #2a2a2a; /* Borda escura sutil */
+    /* Tipografia e espaçamento */
+    color: #888; /* Cinza sutil, não compete com o conteúdo */
+    font-size: 0.9rem;
+    font-weight: 300; /* Fonte leve */
+    padding: 2rem 0; /* Um bom espaçamento vertical */
+    text-align: center;
+}
+
+    .pro-footer span {
+        margin: 0 0.5rem;
+    }
+
+    /* Estilo do divisor "|" */
+    .pro-footer .pro-footer-divider {
+        color: #444; /* Cor ainda mais sutil para o divisor */
+    }
+
+/* --- Ajustes no Footer para Integrantes --- */
+
+.pro-footer {
+    /* ... (o código anterior do footer: flex-shrink, background, etc) ... */
+    /* Vamos garantir que o texto seja centralizado */
+    text-align: center;
+}
+
+/* Container para os nomes */
+.pro-footer-integrantes {
+    display: flex; /* Alinha os nomes lado a lado */
+    justify-content: center; /* Centraliza o grupo de nomes */
+    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
+    gap: 1.5rem; /* Espaçamento entre os nomes */
+    margin-bottom: 1.5rem; /* Espaço entre os nomes e o copyright */
+    font-size: 0.9rem;
+    font-weight: 400; /* Um pouco mais de peso */
+    color: #aaa;
+}
+
+    .pro-footer-integrantes div {
+        display: flex;
+        flex-direction: column; /* Empilha Nome e RM */
+        align-items: center;
+    }
+
+    .pro-footer-integrantes span {
+        font-size: 0.85rem;
+        color: #777; /* RM com uma cor mais sutil */
+        font-weight: 300;
+    }
+
+/* Container para o copyright (código que já existia) */
+.pro-footer-info {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #888;
+}
+
+.pro-footer span {
+    margin: 0 0.25rem; /* Ajusta a margem que estava muito grande */
+}
+
+.pro-footer .pro-footer-divider {
+    color: #444;
+}

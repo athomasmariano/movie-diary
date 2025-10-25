@@ -5,7 +5,10 @@
 
 <div class="row mb-4 align-items-center">
     <div class="col-md-6">
-        <h1 class="pro-title-page">Meu Diário</h1>
+        <div class="pro-section-title" style="text-align: left; margin-bottom: 0;">
+            <h2 style="margin-bottom: 0;">Meu Diário</h2>
+            <p>Seu catálogo pessoal de filmes assistidos.</p>
+        </div>
     </div>
     <div class="col-md-6 text-md-end">
         <a asp-action="Cadastrar" class="btn btn-primary pro-btn">
@@ -14,11 +17,12 @@
     </div>
 </div>
 
-<div class="row mb-4">
+<div class="row mb-5">
     <div class="col">
-        <form asp-action="Index" method="get" class="d-flex">
-            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar por título no seu diário..." value="@ViewBag.Busca" />
-            <button type="submit" class="btn btn-outline-light">Buscar</button>
+        <form asp-action="Index" method="get" class="pro-search-form">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" name="busca" class="form-control" placeholder="Buscar por título no seu diário..." value="@ViewBag.Busca" />
+            <button type="submit" class="btn btn-outline-light pro-btn-outline">Buscar</button>
         </form>
     </div>
 </div>
@@ -45,19 +49,18 @@
                         <div class="movie-rating-badge">
                             @filme.Nota <i class="bi bi-star-fill"></i>
                         </div>
+
+                        <div class="movie-card-overlay">
+                            <div class="movie-card-actions">
+                                <a asp-action="Editar" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a asp-action="Remover" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-danger">Remover</a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="movie-card-body">
                         <h5 class="movie-card-title">@filme.Titulo</h5>
                         <p class="movie-card-year">@filme.Ano</p>
-                        <p class="movie-card-date">
-                            Visto em: @filme.DataAssistido.ToShortDateString()
-                        </p>
-
-                        <div class="movie-card-actions">
-                            <a asp-action="Editar" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-warning">Editar</a>
-                            <a asp-action="Remover" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-danger">Remover</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -65,9 +68,15 @@
     }
     else
     {
-        <div class="col-12 text-center">
-            <p class_="pro-subtitle">Seu diário está vazio.</p>
-            <p>Clique em "Adicionar Filme" para começar a catalogar.</p>
+        <div class="col-12">
+            <div class="pro-empty-state">
+                <i class="bi bi-film"></i>
+                <h2>Seu diário está vazio</h2>
+                <p>Parece que você ainda não adicionou nenhum filme. Que tal começar agora?</p>
+                <a asp-action="Cadastrar" class="btn btn-primary pro-btn">
+                    <i class="bi bi-plus-lg"></i> Adicionar meu primeiro filme
+                </a>
+            </div>
         </div>
     }
 </div>

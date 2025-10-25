@@ -10,17 +10,24 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Filme" asp-action="Index" style="color: #ff6600; font-weight: bold;">MovieLog</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark pro-navbar">
+
+            <div class="container">
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieLog</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Filme" asp-action="Index">Meus Filmes</a>
+                            <a class="nav-link pro-nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pro-nav-link" asp-area="" asp-controller="Filme" asp-action="Index">Meu Diário</a>
                         </li>
                     </ul>
                 </div>
@@ -32,10 +39,30 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <footer class="pro-footer">
         <div class="container">
-            &copy; 2025 - Checkpoint ASP.NET
+
+            <div class="pro-footer-integrantes">
+                <div>
+                    <strong>Arthur Thomas Mariano de Souza</strong>
+                    <span>RM: 561061</span>
+                </div>
+                <div>
+                    <strong>Davi Cavalcanti Jorge</strong>
+                    <span>RM: 559873</span>
+                </div>
+                <div>
+                    <strong>Mateus da Silveira Lima</strong>
+                    <span>RM: 559728</span>
+                </div>
+            </div>
+
+            <div class="pro-footer-info">
+                <span>&copy; 2025 - MovieLog</span>
+                <span class="pro-footer-divider">|</span>
+                <span>Checkpoint 2 ASP.NET Core MVC - FIAP</span>
+            </div>
+
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
