@@ -1,47 +1,73 @@
 ﻿@model List<Filme>
 @{
-    ViewData["Title"] = "Meus Filmes";
+    ViewData["Title"] = "Meu Diário de Filmes";
 }
 
-<h1>Meus Filmes Assistidos</h1>
-
-<div class="row mb-3">
+<div class="row mb-4 align-items-center">
     <div class="col-md-6">
-        <form asp-action="Index" method="get" class="d-flex">
-            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar por título..." value="@ViewBag.Busca" />
-            <button type="submit" class="btn btn-outline-light">Buscar</button>
-        </form>
+        <h1 class="pro-title-page">Meu Diário</h1>
     </div>
-    <div class="col-md-6 text-end">
-        <a asp-action="Cadastrar" class="btn btn-primary">Adicionar Filme</a>
+    <div class="col-md-6 text-md-end">
+        <a asp-action="Cadastrar" class="btn btn-primary pro-btn">
+            <i class="bi bi-plus-lg"></i> Adicionar Filme
+        </a>
     </div>
 </div>
 
-<table class="table table-dark table-striped table-hover">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model[0].Titulo)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Ano)</th>
-            <th>@Html.DisplayNameFor(model => model[0].DataAssistido)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Genero)</th>
-            <th>@Html.DisplayNameFor(model => model[0].Nota)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="row mb-4">
+    <div class="col">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="text" name="busca" class="form-control me-2" placeholder="Buscar por título no seu diário..." value="@ViewBag.Busca" />
+            <button type="submit" class="btn btn-outline-light">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    @if (Model.Any())
+    {
         @foreach (var filme in Model)
         {
-            <tr>
-                <td>@filme.Titulo</td>
-                <td>@filme.Ano</td>
-                <td>@filme.DataAssistido.ToShortDateString()</td>
-                <td>@filme.Genero</td>
-                <td>@filme.Nota / 5</td>
-                <td class="text-end">
-                    <a asp-action="Editar" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-warning">Editar</a>
-                    <a asp-action="Remover" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-danger">Remover</a>
-                </td>
-            </tr>
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="movie-card">
+                    <div class="movie-poster-wrapper">
+                        @if (string.IsNullOrEmpty(filme.PosterUrl))
+                        {
+                            <div class="movie-poster-fallback">
+                                <span>@filme.Titulo</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="@filme.PosterUrl" alt="Pôster de @filme.Titulo" class="movie-poster-img" />
+                        }
+
+                        <div class="movie-rating-badge">
+                            @filme.Nota <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+
+                    <div class="movie-card-body">
+                        <h5 class="movie-card-title">@filme.Titulo</h5>
+                        <p class="movie-card-year">@filme.Ano</p>
+                        <p class="movie-card-date">
+                            Visto em: @filme.DataAssistido.ToShortDateString()
+                        </p>
+
+                        <div class="movie-card-actions">
+                            <a asp-action="Editar" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-warning">Editar</a>
+                            <a asp-action="Remover" asp-route-id="@filme.Id" class="btn btn-sm btn-outline-danger">Remover</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    }
+    else
+    {
+        <div class="col-12 text-center">
+            <p class_="pro-subtitle">Seu diário está vazio.</p>
+            <p>Clique em "Adicionar Filme" para começar a catalogar.</p>
+        </div>
+    }
+</div>
