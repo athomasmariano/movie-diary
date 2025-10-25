@@ -436,3 +436,90 @@ body {
     gap: 0.5rem;
     margin-top: 1rem;
 }
+
+/* --- Estilos do Formulário  --- */
+
+.form-container-pro {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2.5rem 3rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-header-pro {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+    .form-header-pro h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #f0f0f0;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-header-pro p {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: #a0a0a0;
+    }
+
+.form-container-pro .control-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.form-container-pro textarea.form-control {
+    min-height: 120px;
+}
+
+/* Linha divisória antes dos botões */
+.form-divider {
+    border-color: #333;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Container dos botões */
+.form-group-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.pro-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.pro-btn-outline {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+    .pro-btn-outline:hover {
+        background-color: #f0f0f0;
+        color: #1a1a1a;
+        border-color: #f0f0f0;
+    }

@@ -3,61 +3,63 @@
     ViewData["Title"] = "Editar Filme";
 }
 
-<h1>Editar Filme</h1>
-<hr />
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Editar" method="post">
+        <div class="form-container-pro">
 
-            <input type="hidden" asp-for="Id" />
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
+            <div class="form-header-pro">
+                <h2>@ViewData["Title"]</h2>
+                <p>Atualize os dados do filme no seu diário.</p>
             </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="PosterUrl" class="control-label"></label>
-                <input asp-for="PosterUrl" class="form-control" placeholder="https://url-da-imagem-do-filme.com/poster.jpg" />
-                <span asp-validation-for="PosterUrl" class="text-danger"></span>
-            </div>
+            <form asp-action="Editar" method="post">
+                <input type="hidden" asp-for="Id" />
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group mb-3">
-                        <label asp-for="Ano" class="control-label"></label>
-                        <input asp-for="Ano" class="form-control" type="number" />
-                        <span asp-validation-for="Ano" class="text-danger"></span>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PosterUrl" class="control-label"></label>
+                    <input asp-for="PosterUrl" class="form-control" placeholder="https://url-da-imagem-do-filme.com/poster.jpg" />
+                    <span asp-validation-for="PosterUrl" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Ano" class="control-label"></label>
+                            <input asp-for="Ano" class="form-control" type="number" />
+                            <span asp-validation-for="Ano" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="DataAssistido" class="control-label"></label>
+                            <input asp-for="DataAssistido" class="form-control" type="date" />
+                            <span asp-validation-for="DataAssistido" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="form-group mb-3">
-                        <label asp-for="DataAssistido" class="control-label"></label>
-                        <input asp-for="DataAssistido" class="form-control" type="date" />
-                        <span asp-validation-for="DataAssistido" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group mb-3">
-                        <label asp-for="Genero" class="control-label"></label>
-                        <select asp-for="Genero" asp-items="ViewBag.Generos" class="form-control">
-                            <option value="">Selecione...</option>
-                        </select>
-                        <span asp-validation-for="Genero" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Genero" class="control-label"></label>
+                            <select asp-for="Genero" asp-items="ViewBag.Generos" class="form-control">
+                                <option value="">Selecione...</option>
+                            </select>
+                            <span asp-validation-for="Genero" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group mb-3">
-                        <label asp-for="Nota" class="control-label"></label>
-
-                        <div class="star-rating" style="display: flex; flex-direction: row-reverse; justify-content: flex-end;">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Nota" class="control-label"></label>
                             <div class="star-rating-5">
                                 <input type="radio" id="star5" asp-for="Nota" value="5" /><label for="star5" title="5 estrelas">★</label>
                                 <input type="radio" id="star4" asp-for="Nota" value="4" /><label for="star4" title="4 estrelas">★</label>
@@ -65,21 +67,24 @@
                                 <input type="radio" id="star2" asp-for="Nota" value="2" /><label for="star2" title="2 estrelas">★</label>
                                 <input type="radio" id="star1" asp-for="Nota" value="1" /><label for="star1" title="1 estrela">★</label>
                             </div>
-                        <span asp-validation-for="Nota" class="text-danger"></span>
+                            <span asp-validation-for="Nota" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Review" class="control-label"></label>
-                <textarea asp-for="Review" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="Review" class="text-danger"></span>
-            </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Review" class="control-label"></label>
+                    <textarea asp-for="Review" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Review" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-outline-light">Cancelar</a>
-            </div>
-        </form>
+                <hr class="form-divider">
+
+                <div class="form-group-buttons">
+                    <input type="submit" value="Salvar" class="btn btn-primary pro-btn" />
+                    <a asp-action="Index" class="btn btn-outline-light pro-btn-outline">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
